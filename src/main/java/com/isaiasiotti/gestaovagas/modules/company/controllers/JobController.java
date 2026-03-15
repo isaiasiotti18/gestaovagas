@@ -3,8 +3,8 @@ package com.isaiasiotti.gestaovagas.modules.company.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.isaiasiotti.gestaovagas.modules.company.entities.CompanyEntity;
-import com.isaiasiotti.gestaovagas.modules.company.useCases.CreateCompanyUseCase;
+import com.isaiasiotti.gestaovagas.modules.company.entities.JobEntity;
+import com.isaiasiotti.gestaovagas.modules.company.useCases.CreateJobUseCase;
 
 import jakarta.validation.Valid;
 
@@ -13,19 +13,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
-@RequestMapping("/company")
-public class CompanyController {
+@RequestMapping("/job")
+public class JobController {
 
-    private CreateCompanyUseCase createCompanyUseCase;
+    private CreateJobUseCase createJobUseCase;
 
-    public CompanyController(CreateCompanyUseCase createCompanyUseCase) {
-        this.createCompanyUseCase = createCompanyUseCase;
+    public JobController(CreateJobUseCase createJobUseCase) {
+        this.createJobUseCase = createJobUseCase;
     }
 
     @PostMapping
-    public ResponseEntity<Object> create(@Valid @RequestBody CompanyEntity companyEntity) {
+    public ResponseEntity<Object> create(@Valid @RequestBody JobEntity jobEntity) {
         try {
-            var result = this.createCompanyUseCase.execute(companyEntity);
+            var result = this.createJobUseCase.execute(jobEntity);
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
