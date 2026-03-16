@@ -28,7 +28,7 @@ public class CompanyEntity {
     @Email(message = "Type a valid e-mail.")
     private String email;
 
-    @Length(min = 10, max = 25, message = "The password must be between 10 and 25 characters long.")
+    @Length(min = 10, max = 255, message = "The password must be between 10 and 25 characters long.")
     private String password;
 
     private String website;
